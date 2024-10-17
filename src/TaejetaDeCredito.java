@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaejetaDeCredito {
@@ -8,6 +9,28 @@ public class TaejetaDeCredito {
     public TaejetaDeCredito(double limite) {
         this.limite = limite;
         this.saldo = limite;
-        this.listaDeCompra = listaDeCompra;
+        this.listaDeCompra = new ArrayList<>();
     }
+    public boolean lanzarCompra(Compra compra){
+        if (this.saldo > compra.getValor()){
+            this.saldo-= compra.getValor();
+            this.listaDeCompra.add(compra);
+            return true;
+        }
+        return false;
+    }
+
+    public double getLimite() {
+        return limite;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public List<Compra> getListaDeCompra() {
+        return listaDeCompra;
+    }
+
+
 }
